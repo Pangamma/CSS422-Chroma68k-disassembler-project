@@ -1,11 +1,14 @@
 # Program Description
 This program is written in Motorola 68000 assembly language (M68k), and its purpose is to disassemble data back into human readable opcodes and effective addresses. The program was set up to be easier to work with and use than simple black and white disassemblers. By adding color to the output display, the viewing quality is improved. Hence the name, “Chroma68k Disassembler”. Chroma means color. (Final version submitted has two lines commented out which, when uncommented, add color to the entire program again. Look for SET_COLOR_RAW subroutine) I wanted to add color to this because I personally couldn’t stand the black and white without syntax highlighting. Even with the added difficulty of doing this type of printing, I feel like it helped me structure the IO section in a much cleaner (modular) way than I would have done otherwise. 
+
 ![In Progress](https://github.com/Pangamma/CSS422-Chroma68k-disassembler-project/blob/master/documentation/images/Usage.jpg?raw=true)
  
 The user is greeted with a colorful splash page. Upon tapping "enter", the program begins. 
+
 ![Intro Image](https://github.com/Pangamma/CSS422-Chroma68k-disassembler-project/blob/master/documentation/images/Intro.jpg?raw=true)
 
 The user ultimately ends at the "Retry?" screen. If their entered key is 'Y', the program will start over again from the beginning. 
+
 ![Finish](https://github.com/Pangamma/CSS422-Chroma68k-disassembler-project/blob/master/documentation/images/goAgain.jpg?raw=true)
 
 For a design philosophy, I decided I didn’t want to take any chances on messing up the project, so I wanted to finish the project earlier rather than later. To make the OpCodes section I wrote a program in Java that takes in opcode formats and prints out the opcodes section of the project. This was really helpful for also identifying patterns between different opcode formats, and to help identify where certain EA patterns could be re-used, and it could also be used to identify certain coverage gaps where I’d need to watch out for illegal opcode + EA combinations. It also eased making quick major changes to the op-determine section.

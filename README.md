@@ -1,3 +1,5 @@
+CSS 422 Hardware 68K Assembly Project
+
 # Program Description
 This program is written in Motorola 68000 assembly language (M68k), and its purpose is to disassemble data back into human readable opcodes and effective addresses. The program was set up to be easier to work with and use than simple black and white disassemblers. By adding color to the output display, the viewing quality is improved. Hence the name, “Chroma68k Disassembler”. Chroma means color. (Final version submitted has two lines commented out which, when uncommented, add color to the entire program again. Look for SET_COLOR_RAW subroutine) I wanted to add color to this because I personally couldn’t stand the black and white without syntax highlighting. Even with the added difficulty of doing this type of printing, I feel like it helped me structure the IO section in a much cleaner (modular) way than I would have done otherwise. 
 

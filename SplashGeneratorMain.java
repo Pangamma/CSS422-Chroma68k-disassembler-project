@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 public class Main {
 
     /**
+     * This Java program generates the colorful full PNG splash image files
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {        

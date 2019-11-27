@@ -44,8 +44,6 @@ printPercent:
     RTS  
 printNewLine:
     MOVE.W      #CRNL, (A1)+    
-;    MOVE.B      #CR, (A1)+   
-;    MOVE.B      #NL, (A1)+
     JSR         PRINT_OUT
     RTS 
 printTab:

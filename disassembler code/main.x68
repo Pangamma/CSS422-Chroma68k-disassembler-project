@@ -24,10 +24,10 @@ MAIN:
 *------------------------------------------------------------------------------
     INCLUDE 'ea_main.x68'               ; Effective Address decoder
     INCLUDE 'op_loop.x68'               ; OPCODE decoder  
-    INCLUDE 'io_splash_cool.x68'        ; title splash screen.
-    INCLUDE 'io_address_inputs.x68'     ; collect address routines. "GET_START_AND_END_ADDRESSES"
+    INCLUDE 'io_splash_lame.x68'        ; title splash screen.
+    INCLUDE 'io_address_inputs_test.x68'     ; collect address routines. "GET_START_AND_END_ADDRESSES"
     INCLUDE 'equates.x68'               ; common variables/constants/reserved memory spaces    
-    INCLUDE 'io_ask_to_go_again_cool.x68'    ; Prompt to retry. Also show quit message.  "ASK_TO_GO_AGAIN" && "SHOW_QUIT_MSG"
+    INCLUDE 'io_ask_to_go_again.x68'    ; Prompt to retry. Also show quit message.  "ASK_TO_GO_AGAIN" && "SHOW_QUIT_MSG"
     INCLUDE 'io_util.x68'               ; print functions
     INCLUDE 'TestData.x68'              ; Start at TD_START, end at TD_STOP. 
     INCLUDE 'strings.x68'               ; String constants, message strings. Include this last, or else it sometimes messes with addressing.
@@ -35,6 +35,7 @@ MAIN:
 
 STOP:
     END    MAIN
+
 
 
 

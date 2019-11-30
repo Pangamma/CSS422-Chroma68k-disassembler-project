@@ -35,7 +35,6 @@ SHOW_QUIT_MSG:
     MOVE.W  #$FF00,D1           * Clear output
     MOVE    #11,D0  
     TRAP    #15
-
     LEA     atga_quitMessage, A3
     JSR     APPEND_A3    
     JSR     printOutPromptColor

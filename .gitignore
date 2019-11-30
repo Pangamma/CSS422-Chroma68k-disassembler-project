@@ -1,3 +1,5 @@
 *.L68
 *.S68
 *.class
+/code-generators/OpCodeWriter/target/
+/code-generators/DisassemblerTester/target/

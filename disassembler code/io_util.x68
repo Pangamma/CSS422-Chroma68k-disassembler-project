@@ -6,7 +6,7 @@
 * Clears the console output. 
 *------------------------------------------------------------------------------
 printSlash:
-    MOVE.B      #'/', (A1)+
+    MOVE.B      #'/', (A1)+ 
     JSR         printOutSymbolColor
     RTS
 printMoney:
@@ -43,8 +43,10 @@ printPercent:
     JSR         printOutSymbolColor
     RTS  
 printNewLine:
-    MOVE.W      #CRNL, (A1)+    
-    JSR         PRINT_OUT
+    MOVE.B      #CR, (A1)+   
+    JSR         PRINT_OUT        
+    MOVE.B      #LF, (A1)+   
+    JSR         PRINT_OUT    
     RTS 
 printTab:
     MOVE.L      #'    ', (A1)+
@@ -100,7 +102,6 @@ printOutSymbolColor:
     MOVEM.L (SP)+, D1 
     RTS
 printOutAddrColor:
-printOutPromptColor:
 *printOutWhite:
     MOVEM.L     D1, -(SP)       * Save register
     MOVE.L      #$00FFFFFF, D1
@@ -108,30 +109,46 @@ printOutPromptColor:
     JSR         PRINT_OUT
     MOVEM.L (SP)+, D1
     RTS
+printOutPromptColor:
+    MOVEM.L     D1, -(SP)       * Save register
+    MOVE.L      #$00FFFFFF, D1
+    JSR         SET_COLOR_RAW
+    JSR         FILES_SUSPEND_OUTPUT
+    JSR         PRINT_OUT
+    JSR         FILES_RESUME_OUTPUT
+    MOVEM.L (SP)+, D1
+    RTS
 printOutErrorColor:
 *printOutRed:
     MOVEM.L     D1, -(SP)       * Save register
     MOVE.L      #$001111FF, D1
     JSR         SET_COLOR_RAW
+    JSR         FILES_SUSPEND_OUTPUT
     JSR         PRINT_OUT
+    JSR         FILES_RESUME_OUTPUT
     MOVEM.L (SP)+, D1
     RTS    
+    
 * Performs setting of the color. Requires that the color LONG be pushed to d1 first.
 SET_COLOR_RAW:		* This is where the magic happens.
+    ifne IS_COLOR_ENABLED               * if not 0. Conditionally renders color output or not
     MOVEM.L         D0/D2,-(SP)         * Restore registers
     CLR.L           D2
-    MOVE.L          #21,    d0  Task type for setting font properties. (Task 21)
-    TRAP            #15         Actually SET the font properties.
+    MOVE.L          #21, d0             * Task type for setting font properties. (Task 21)
+    TRAP            #15                 * Actually SET the font properties.
     MOVEM.L         (SP)+,D0/D2         * Restore registers  
+    endc
     RTS
 
 **------------------------------------------------------------------------------    
 * Add null to (A1)+, then print contents of (A1) when A1 = #ADDR_OUT
 PRINT_OUT:
-
-    MOVE.B      #NULL, (A1)+
-    MOVE.L      #ADDR_OUT, A1
-    
+    MOVE.B      #NULL, (A1)+  
+    ifne IS_FILE_OUTPUT_ENABLED     * Append current buffer to end of output file
+    JSR         FILES_APPEND        * Only gets compiled into code if output is
+    endc                            * marked as enabled.
+   
+    LEA         ADDR_OUT, A1
     MOVEM.L     D0/D1, -(SP)        * Save registers
     MOVE.B      #14, D0
     TRAP        #15
@@ -139,10 +156,9 @@ PRINT_OUT:
     JSR         RESET_OUT
     RTS   
 RESET_OUT:
-    MOVE.L  #ADDR_OUT, A1
+    LEA         ADDR_OUT, A1
     RTS
- 
-
+    
 * -----------------------------------------------------------------------------
 * The only input is D5. The output is D5. Reverses the long word contents of D5 
 REVERSE_D5_LONG:
@@ -264,42 +280,6 @@ NEXT_LONG:
     ROR.W   #8, D3
     MOVE.B (A5)+, D3
     RTS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

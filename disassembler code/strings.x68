@@ -22,8 +22,8 @@ atga_quitMessage DC.B   'Thanks for playing. See you next time! ',CR,LF,0
 
 ;--------------------------------------------------------------------------------------------------
 ; io_splash_cool.x68
-bmp_enterToContinue DC.B 'Press "enter" to continue.',0
-bmp_loading DC.B 'Loading...',0
+bmp_enterToContinue DC.B 'Press "enter" to continue.',CR,LF,0
+bmp_loading DC.B 'Loading...',CR,LF,0
 ; io_splash_lame.x68
 splash_TEXT_CHROMA_TITLE 
 	    DC.B	 '    ______ _                                    __   _____  _    _ ',CR,LF
@@ -58,7 +58,7 @@ s_SccArray	    DC.W	'T','F','HI','LS','CC','CS','NE','EQ','VC','VS','PL','MI','G
 ;--------------------------------------------------------------------------------------------------
 ; OpCodes
 ;----------------------------------------------------------------------------------------------------
-opLoop_enterToContinue  DC.B 'Press "enter" to continue reading.',0
+opLoop_enterToContinue  DC.B 'Press "enter" to continue reading.',CR,LF,0
 
 ;--------------------------------------------------------------------------------------------------
 ; OpCodes
@@ -138,6 +138,7 @@ opName_UNLK	DC.B	'UNLK',0
 
 eaName_CCR	DC.B	'CCR',0
 eaName_SR	DC.B	'SR',0
+
 
 
 

@@ -18,7 +18,8 @@ OP_LOOP_POST_INIT:
     SUBA.W  #1, A4                  ; Decrement A4 num lines counter. (Consider making this memory storage instead of address register)
     CMP.W   #0, A4
     BGT     OP_LOOP_POST_INIT       ; If counter is 0 or lower, loop right away.
-    MOVE.W  #NUM_WIN_LINES,A4	
+    MOVE.W  #NUM_WIN_LINES,A4
+    JSR     FILES_SUSPEND_OUTPUT	
     LEA     opLoop_enterToContinue ,A3
     JSR     APPEND_A3
     JSR     printOutPromptColor
@@ -28,10 +29,11 @@ OP_LOOP_POST_INIT:
     MOVE.L      #2, D0
     TRAP        #15                     * Contents stored in A1. Pray they don't enter in a mega string.
     ;MOVE.L      #ZERO_ADDR, (A1)        * Reset it so A1 is zeroed out.
-   
+    
     ;MOVE.W  #$FF00,D1           * Clear output
     ;MOVE    #11,D0  
     ;TRAP    #15
+    JSR     FILES_RESUME_OUTPUT
 
     JMP     OP_LOOP_POST_INIT  
 OP_LOOP_QUIT:
@@ -106,6 +108,7 @@ AnalyzeCurrentWord:
     MOVE.B  D4, ADDR_OP_0400
 
     RTS
+
 
 
 

@@ -15,7 +15,7 @@ public enum EaFormat {
   f_xxxx_xxx_x_01_mmm_nnn("ea_pattern_ori_to_sr"),
   f_xxxx_xxx_x_ss_mmm_nnn("ea_pattern_ori"),
   f_xxxx_xxx_x_xx_mmm_nnn("ea_pattern_jsr"),
-  f_xxxx_ddd_x_xx_mmm_nnn("???"), // BSTS formats with the ddd stuff
+  f_xxxx_ddd_x_xx_mmm_nnn("ea_pattern_xxxx_ddd_x_xx_mmm_nnn"), // BSTS formats with the ddd stuff
   
   ;
   private String subroutineName;

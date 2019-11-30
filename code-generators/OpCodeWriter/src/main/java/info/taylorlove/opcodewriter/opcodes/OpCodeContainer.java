@@ -66,10 +66,10 @@ public final class OpCodeContainer {
         .add(new OpCode("0000 100 0 10 mmm nnn", "BCLR", "BCLR", "ea_pattern_jsr")) // BCLR (B/L)
         .add(new OpCode("0000 100 0 11 mmm nnn", "BSET", "BSET", "ea_pattern_jsr")) // BSET (B/L)
         
-        .add(new OpCode("0000 ddd 1 00 mmm nnn", "BTST", "BTST", "f_xxxx_ddd_x_xx_mmm_nnn")) // BTST (B/L)
-        .add(new OpCode("0000 ddd 1 01 mmm nnn", "BCHG", "BCHG", "f_xxxx_ddd_x_xx_mmm_nnn")) // BCHG (B/L)
-        .add(new OpCode("0000 ddd 1 10 mmm nnn", "BCLR", "BCLR", "f_xxxx_ddd_x_xx_mmm_nnn")) // BCLR (B/L)
-        .add(new OpCode("0000 ddd 1 11 mmm nnn", "BSET", "BSET", "f_xxxx_ddd_x_xx_mmm_nnn")) // BSET (B/L)
+        .add(new OpCode("0000 ddd 1 00 mmm nnn", "BTST", "BTST", "ea_pattern_f_xxxx_ddd_x_xx_mmm_nnn")) // BTST (B/L)
+        .add(new OpCode("0000 ddd 1 01 mmm nnn", "BCHG", "BCHG", "ea_pattern_f_xxxx_ddd_x_xx_mmm_nnn")) // BCHG (B/L)
+        .add(new OpCode("0000 ddd 1 10 mmm nnn", "BCLR", "BCLR", "ea_pattern_f_xxxx_ddd_x_xx_mmm_nnn")) // BCLR (B/L)
+        .add(new OpCode("0000 ddd 1 11 mmm nnn", "BSET", "BSET", "ea_pattern_f_xxxx_ddd_x_xx_mmm_nnn")) // BSET (B/L)
         
         .add(new OpCode("0100 0000 ss mmm nnn", "NEGX", "NEGX", "ea_pattern_clr")) // NEGX  (B/W/L)
         .add(new OpCode("0100 0010 ss mmm nnn", "CLR", "CLR", "ea_pattern_clr")) // CLR   (B/W/L)

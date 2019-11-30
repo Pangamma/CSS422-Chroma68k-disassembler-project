@@ -39,9 +39,9 @@ public class Main {
 //------------------------------------------------------------------------------
 //    System.out.println(container.getOpNameStrings());
 //		container.getLayer1And2AndInvalidCode();
-    System.out.println(container.getInvalidOpCodeBinaryInts());
+    System.out.println(container.getLayer1And2AndInvalidCode());
 //		System.out.println(container.getLayer1And2AndInvalidCode());
-//		System.out.println(container.getLayer3Code());
+		System.out.println(container.getLayer3Code());
 //		for(OpCode code : codes){
 //			System.out.println(code.getSpecificity()+"\t"+code.getFormat()+"\t"+code.getOpMemonic()+"\t"+code.getVariablesPattern()+"\t"+code.getEaPatternSubRoutine());
 //			System.out.println(code.getOpMemonic());

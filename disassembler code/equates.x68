@@ -6,10 +6,7 @@
 
 ADDR_MIN    EQU     $00007000       ; minimum not yet implemented
 ADDR_MAX    EQU     $00FFFFF0       ; maximum not yet implemented
-;ADDR_OUT    EQU     $00006000       * The starting address for the output buffer. Used in printing. Maximum $1000 bytes.
-ADDR_OUT    DS.B     1024           * The starting address for the output buffer. Used in printing. Maximum 1024 bytes.
-;ZERO_ADDR   EQU     $00000000
-;ADDR_ZERO   EQU     $00000000
+ADDR_OUT    DS.B     1024           * Used in printing. Maximum 1024 bytes, starting at the label
 NUM_WIN_LINES   EQU 31              ; Number of lines in a window. 
 
 
@@ -52,6 +49,9 @@ ADDR_OP_0040    DS.B    1   ; Size for MOVEM
 ADDR_OP_FFFF    DS.B    2   ; The current OPWord, basically.
 ADDR_Plchldr    DS.B    2   ; Useless data because it makes my blocks of 4 pattern look good
 ;ADDR_IO_ADDR    DS.B    4   ; Current address at start of opword.
+
+
+
 
 
 
